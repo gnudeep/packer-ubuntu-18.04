@@ -14,7 +14,7 @@ if [[ $UPDATE =~ true || $UPDATE =~ 1 || $UPDATE =~ yes ]]; then
     apt-get -y dist-upgrade
 fi
 apt-get -y install --no-install-recommends build-essential linux-headers-generic
-apt-get -y install --no-install-recommends ssh nfs-common vim curl git
+apt-get -y install --no-install-recommends ssh nfs-common vim curl git unzip
 
 # Disable the release upgrader
 #echo "==> Disabling the release upgrader"
