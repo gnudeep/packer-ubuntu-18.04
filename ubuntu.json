@@ -79,7 +79,8 @@
             "script/motd.sh",
             "script/minimize.sh",
             "script/cleanup.sh",
-            "script/docker-kubeadm-k8s-install.sh"
+            "script/docker-k8s.sh",
+            "script/cellery.sh"
         ],
         "type": "shell"
     }],
