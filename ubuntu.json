@@ -52,6 +52,12 @@
         "output": "box/{{.Provider}}/{{user `vm_name`}}-{{user `version`}}.box",
         "type": "vagrant",
         "vagrantfile_template": "{{user `vagrantfile_template`}}"
+    },
+    {
+      "keep_input_artifact": false,
+      "output": "VirtualBox/{{user `vm_name`}}-{{user `version`}}.tar.gz",
+      "type": "compress",
+      "format": "tar.gz"
     }],
     "provisioners": [{
         "environment_vars": [
@@ -72,13 +78,14 @@
             "script/virtualbox.sh",
             "script/motd.sh",
             "script/minimize.sh",
-            "script/cleanup.sh"
+            "script/cleanup.sh",
+            "script/docker-kubeadm-k8s-install.sh"
         ],
         "type": "shell"
     }],
     "variables": {
         "boot_command_prefix": "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
-        "cpus": "1",
+        "cpus": "2",
         "disable_ipv6": "true",
         "disk_size": "40960",
         "headless": "true",
@@ -90,7 +97,7 @@
         "iso_name": "ubuntu-18.04.2-server-amd64.iso",
         "iso_path": "iso",
         "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.2-server-amd64.iso",
-        "memory": "1024",
+        "memory": "2048",
         "no_proxy": "{{env `no_proxy`}}",
         "preseed": "preseed.cfg",
         "ssh_fullname": "vagrant",
