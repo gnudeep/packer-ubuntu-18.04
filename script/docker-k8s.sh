@@ -28,7 +28,8 @@ else
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
 fi
 apt-get update
-apt-get install -y docker.io
+#apt-get install -y docker.io
+apt-get install -y docker-ce=18.06.0~ce~3-0~ubuntu
 
 #Install NFS client
 apt-get install -y nfs-common
@@ -49,7 +50,7 @@ apt-mark hold kubelet kubeadm kubectl
 #Initialize the k8s cluster
 kubeadm init --pod-network-cidr=10.244.0.0/16
 
-sleep 60
+sleep 180
 
 #Create .kube file if it does not exists
 mkdir -p $HOME/.kube
@@ -67,6 +68,7 @@ chown -R vagrant:vagrant $HOME/.kube
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 #Install Flannel network
-kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.10.0/Documentation/kube-flannel.yml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.11.0/Documentation/kube-flannel.yml
 
+sleep 180
 echo "Done."

@@ -77,17 +77,23 @@
             "script/vagrant.sh",
             "script/virtualbox.sh",
             "script/motd.sh",
-            "script/minimize.sh",
+	    "script/minimize.sh",
             "script/cleanup.sh",
             "script/docker-k8s.sh",
             "script/cellery.sh"
         ],
         "type": "shell"
-    }],
+    },
+        {
+            "type": "file",
+            "source": "/home/vagrant/.kube/config",
+            "destination": "kubectl_conf/config",
+            "direction": "download"
+        }],
     "variables": {
         "boot_command_prefix": "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
         "cpus": "2",
-        "disable_ipv6": "true",
+        "disable_ipv6": "false",
         "disk_size": "40960",
         "headless": "true",
         "hostname": "bionic64",
@@ -98,7 +104,7 @@
         "iso_name": "ubuntu-18.04.2-server-amd64.iso",
         "iso_path": "iso",
         "iso_url": "http://cdimage.ubuntu.com/ubuntu/releases/bionic/release/ubuntu-18.04.2-server-amd64.iso",
-        "memory": "2048",
+        "memory": "4096",
         "no_proxy": "{{env `no_proxy`}}",
         "preseed": "preseed.cfg",
         "ssh_fullname": "vagrant",
